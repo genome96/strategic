@@ -215,17 +215,20 @@ function first_setup() {
     echo "# Directory Xray berhasil dipasang"
     echo "==============================="
 
+    # Source the /etc/os-release file to get OS information
+    . /etc/os-release
+
     # Determine OS and set up dependencies
-    if [[ $(grep -w ID /etc/os-release | head -n1 | cut -d= -f2) == "ubuntu" ]]; then
+    if [[ $ID == "ubuntu" ]]; then
         # Ubuntu specific setup
-        echo "Setup Dependencies $(grep -w PRETTY_NAME /etc/os-release | head -n1 | cut -d= -f2- | tr -d '"' | sed 's/PRETTY_NAME//g')"
+        echo "Setup Dependencies $PRETTY_NAME"
         sudo apt update -y
         sudo apt-get install --no-install-recommends software-properties-common -y
         sudo add-apt-repository ppa:vbernat/haproxy-2.0 -y
         sudo apt-get -y install haproxy=2.0.*
-    elif [[ $(grep -w ID /etc/os-release | head -n1 | cut -d= -f2) == "debian" ]]; then
+    elif [[ $ID == "debian" ]]; then
         # Debian specific setup
-        echo "Setup Dependencies For OS Is $(grep -w PRETTY_NAME /etc/os-release | head -n1 | cut -d= -f2- | tr -d '"' | sed 's/PRETTY_NAME//g')"
+        echo "Setup Dependencies For OS Is $PRETTY_NAME"
         curl -fsSL https://haproxy.debian.net/bernat.debian.org.gpg | sudo gpg --dearmor -o /usr/share/keyrings/haproxy.debian.net.gpg
         echo "deb [signed-by=/usr/share/keyrings/haproxy.debian.net.gpg]" \
             https://haproxy.debian.net buster-backports-2.0 main | sudo tee /etc/apt/sources.list.d/haproxy.list
@@ -233,10 +236,11 @@ function first_setup() {
         sudo apt-get -y install haproxy=2.0.*
     else
         # Unsupported OS
-        echo "Your OS Is Not Supported ($(grep -w PRETTY_NAME /etc/os-release | head -n1 | cut -d= -f2- | tr -d '"' | sed 's/PRETTY_NAME//g'))"
+        echo "Your OS Is Not Supported ($PRETTY_NAME)"
         exit 1
     fi
 }
+
 
 
 
