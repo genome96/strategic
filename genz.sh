@@ -216,14 +216,14 @@ function first_setup() {
     echo "==============================="
 
     # Determine OS and set up dependencies
-    if [[ $(grep -w ID /etc/os-release | head -n1 | cut -d= -f2 | tr -d '"') == "ubuntu" ]]; then
+    if [[ $(grep -w ID /etc/os-release | head -n1 | cut -d= -f2) == "ubuntu" ]]; then
         # Ubuntu specific setup
         echo "Setup Dependencies $(grep -w PRETTY_NAME /etc/os-release | head -n1 | cut -d= -f2- | tr -d '"' | sed 's/PRETTY_NAME//g')"
         sudo apt update -y
         sudo apt-get install --no-install-recommends software-properties-common -y
         sudo add-apt-repository ppa:vbernat/haproxy-2.0 -y
         sudo apt-get -y install haproxy=2.0.*
-    elif [[ $(grep -w ID /etc/os-release | head -n1 | cut -d= -f2 | tr -d '"') == "debian" ]]; then
+    elif [[ $(grep -w ID /etc/os-release | head -n1 | cut -d= -f2) == "debian" ]]; then
         # Debian specific setup
         echo "Setup Dependencies For OS Is $(grep -w PRETTY_NAME /etc/os-release | head -n1 | cut -d= -f2- | tr -d '"' | sed 's/PRETTY_NAME//g')"
         curl -fsSL https://haproxy.debian.net/bernat.debian.org.gpg | sudo gpg --dearmor -o /usr/share/keyrings/haproxy.debian.net.gpg
