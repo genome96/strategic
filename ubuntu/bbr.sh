@@ -1,6 +1,6 @@
 #!/bin/bash
-# Edition : Stable Edition V3.0
-# Author  : chapeey tech
+# Edition : Stable Edition V4.0
+# Author  : darkanonc
 # (C) Copyright 2024
 # =========================================
 
@@ -18,7 +18,7 @@ clear
 #	 menu
 #else
 
-echo -e "Installing TCP BBR Mod CHAPEEY VPN"
+echo -e "Installing TCP BBR Mod DARKANON VPN"
 echo -e "Please Wait BBR Installation Will Starting . . ."
 sleep 5
 clear

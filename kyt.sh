@@ -9,13 +9,13 @@ NC='\e[0m'
 apt update && apt upgrade
 apt install python3 python3-pip git
 cd /usr/bin
-wget https://raw.githubusercontent.com/Amchapeey/strategic/main/ubuntu/bot.zip
+wget https://raw.githubusercontent.com/genome96/strategic/main/ubuntu/bot.zip
 unzip bot.zip
 mv bot/* /usr/bin
 chmod +x /usr/bin/*
 rm -rf bot.zip
 clear
-wget https://raw.githubusercontent.com/Amchapeey/strategic/main/ubuntu/kyt.zip
+wget https://raw.githubusercontent.com/genome96/strategic/main/ubuntu/kyt.zip
 unzip kyt.zip
 pip3 install -r kyt/requirements.txt
 
@@ -24,8 +24,8 @@ echo ""
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e " \e[1;97;101m          ADD BOT PANEL          \e[0m"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "${grenbo}Tutorial Creat Bot and ID Telegram${NC}"
-echo -e "${grenbo}[*] Creat Bot and Token Bot : @BotFather${NC}"
+echo -e "${grenbo}Tutorial Create Bot and ID Telegram${NC}"
+echo -e "${grenbo}[*] Create Bot and Token Bot : @BotFather${NC}"
 echo -e "${grenbo}[*] Info Id Telegram : @MissRose_bot , perintah /info${NC}"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 read -e -p "[*] Input your Bot Token : " bottoken

