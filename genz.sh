@@ -202,31 +202,40 @@ print_install "Membuat direktori xray"
     export IP=$( curl -s https://ipinfo.io/ip/ )
 
 # Change Environment System
-function first_setup(){
-    timedatectl set-timezone Africa/Kenya
+function first_setup() {
+    # Set timezone to Africa/Nairobi
+    timedatectl set-timezone Africa/Nairobi
+
+    # Configure iptables-persistent
     echo iptables-persistent iptables-persistent/autosave_v4 boolean true | debconf-set-selections
     echo iptables-persistent iptables-persistent/autosave_v6 boolean true | debconf-set-selections
+
+    # Print success message
     print_success "Directory Xray"
-    if [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "ubuntu" ]]; then
-    echo "Setup Dependencies $(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')"
-    sudo apt update -y
-    apt-get install --no-install-recommends software-properties-common
-    add-apt-repository ppa:vbernat/haproxy-2.0 -y
-    apt-get -y install haproxy=2.0.\*
-elif [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "debian" ]]; then
-    echo "Setup Dependencies For OS Is $(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')"
-    curl https://haproxy.debian.net/bernat.debian.org.gpg |
-        gpg --dearmor >/usr/share/keyrings/haproxy.debian.net.gpg
-    echo deb "[signed-by=/usr/share/keyrings/haproxy.debian.net.gpg]" \
-        http://haproxy.debian.net buster-backports-1.8 main \
-        >/etc/apt/sources.list.d/haproxy.list
-    sudo apt-get update
-    apt-get -y install haproxy=1.8.\*
-else
-    echo -e " Your OS Is Not Supported ($(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g') )"
-    exit 1
-fi
+
+    # Determine OS and set up dependencies
+    if [[ $(grep -w ID /etc/os-release | head -n1 | sed 's/[= "]//g') == "ubuntu" ]]; then
+        # Ubuntu specific setup
+        echo "Setup Dependencies $(grep -w PRETTY_NAME /etc/os-release | head -n1 | sed 's/[="]//g' | sed 's/PRETTY_NAME//g')"
+        sudo apt update -y
+        sudo apt-get install --no-install-recommends software-properties-common -y
+        sudo add-apt-repository ppa:vbernat/haproxy-2.0 -y
+        sudo apt-get -y install haproxy=2.0.*
+    elif [[ $(grep -w ID /etc/os-release | head -n1 | sed 's/[= "]//g') == "debian" ]]; then
+        # Debian specific setup
+        echo "Setup Dependencies For OS Is $(grep -w PRETTY_NAME /etc/os-release | head -n1 | sed 's/[="]//g' | sed 's/PRETTY_NAME//g')"
+        curl -fsSL https://haproxy.debian.net/bernat.debian.org.gpg | sudo gpg --dearmor -o /usr/share/keyrings/haproxy.debian.net.gpg
+        echo "deb [signed-by=/usr/share/keyrings/haproxy.debian.net.gpg]" \
+            https://haproxy.debian.net buster-backports-2.0 main | sudo tee /etc/apt/sources.list.d/haproxy.list
+        sudo apt-get update
+        sudo apt-get -y install haproxy=2.0.*
+    else
+        # Unsupported OS
+        echo "Your OS Is Not Supported ($(grep -w PRETTY_NAME /etc/os-release | head -n1 | sed 's/[="]//g' | sed 's/PRETTY_NAME//g'))"
+        exit 1
+    fi
 }
+
 
 # GEO PROJECT
 clear
